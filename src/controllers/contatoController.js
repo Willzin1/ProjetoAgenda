@@ -46,7 +46,7 @@ exports.edit = async (req, res) => {
         };
 
         req.flash('success', 'Contato alterado com sucesso.');
-        req.session.save(() => res.redirect(`/contato/index/${contato.contato._id}`));
+        req.session.save(() => res.redirect(`/`));
         return;
     }catch(err) {
         console.log(err);

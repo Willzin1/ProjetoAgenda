@@ -27,13 +27,10 @@ const routes = require('./routes')
 const path = require('path');
 
 // Medidas de seguranças
-const helmet = require('helmet');
 const csrf = require('csurf'); // cria um token para todos os formulários, afim de evitar ataques.
 
 // Nossos middlewares, são funções que são executadas na rota
 const { middlewareGlobal, checkCsrfError, csrfMiddleware } = require('./src/middlewares/middleware');
-
-app.use(helmet()); // usando o helmet
 
 app.use(express.urlencoded({ extended: true })); // Este middleware será útil para processar os dados de formulários enviados, permitindo acessá-los via req.body na sua rota.
 app.use(express.json()); // é usado para garantir que o Express consiga interpretar requisições com o conteúdo no formato JSON de maneira simples e automática.

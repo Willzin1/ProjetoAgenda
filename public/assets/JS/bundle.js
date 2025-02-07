@@ -100,6 +100,12 @@ var Contato = /*#__PURE__*/function () {
     _classCallCheck(this, Contato);
     this.form = document.querySelector(formClass);
   }
+
+  /**
+  * Método para inicializar os eventos.
+  * 
+  * @returns {void}
+  */
   return _createClass(Contato, [{
     key: "init",
     value: function init() {
@@ -109,6 +115,17 @@ var Contato = /*#__PURE__*/function () {
         _this.handleSubmit(event);
       });
     }
+
+    /**
+     * 
+     * Método para lidar com o evento de submit.
+     * Previne o envio padrão e chama a validação 
+     * dos campos e do email antes de submeter. 
+     * 
+     * @param {Event} event 
+     * @returns {void}
+     * 
+     */
   }, {
     key: "handleSubmit",
     value: function handleSubmit(event) {
@@ -118,6 +135,17 @@ var Contato = /*#__PURE__*/function () {
       }
       ;
     }
+
+    /**
+     * 
+     * Método que irá percorrer os campos
+     * e verificará se estão preenchidos.
+     * Caso algum campo esteja vazio, cria
+     * uma mensagem de erro. 
+     * 
+     * @returns {boolean} - retorna true se algum campo estiver vazio.
+     * 
+     */
   }, {
     key: "isFieldValid",
     value: function isFieldValid() {
@@ -140,6 +168,16 @@ var Contato = /*#__PURE__*/function () {
         _iterator.f();
       }
     }
+
+    /**
+     * 
+     * Método que irá verificar se o email inserido no input é válido.
+     * Caso não seja válido, cria uma mensagem de erro.
+     * 
+     * @param {Event} event 
+     * @returns {boolean} - retorna true caso o email seja inválido.
+     * 
+     */
   }, {
     key: "isEmailValid",
     value: function isEmailValid(event) {
@@ -152,6 +190,18 @@ var Contato = /*#__PURE__*/function () {
       }
       return valid;
     }
+
+    /**
+     * 
+     * Método que irá criar mensagens de erro,
+     * essas mensagens serão inseridas após o campo.
+     * A mensagem recebe uma classe 'text-danger'.
+     * 
+     * @param {string} errorText - Texto da mensagem de erro.
+     * @param {HTMLElement} fieldInput - O campo onde a mensagem será inserida pós.
+     * @returns {void}
+     * 
+     */
   }, {
     key: "createError",
     value: function createError(fieldInput, errorText) {
@@ -160,6 +210,14 @@ var Contato = /*#__PURE__*/function () {
       div.classList.add('text-danger');
       fieldInput.insertAdjacentElement('afterend', div);
     }
+
+    /**
+     * Método que remove todas as mensagens de erro com
+     * a classe 'text-danger' antes de validar novamente.
+     * 
+     * @returns {void} 
+     * 
+     */
   }, {
     key: "cleanUp",
     value: function cleanUp() {
@@ -212,7 +270,11 @@ var Login = /*#__PURE__*/function () {
   }
 
   /**
+   * 
    * Método para inicializar os eventos.
+   * 
+   * @returns {void}
+   * 
    */
   return _createClass(Login, [{
     key: "init",
@@ -226,9 +288,13 @@ var Login = /*#__PURE__*/function () {
 
     /**
      * 
-     * @returns 
-     * 
      * Método que irá lidar com o submit.
+     * Previne o envio padrão.
+     * Se a validação não tiver nenhum sucesso,
+     * ele submete o formulário.
+     * 
+     * @returns {void}
+     *  
      */
   }, {
     key: "handleSubmit",
@@ -239,10 +305,12 @@ var Login = /*#__PURE__*/function () {
 
     /**
      * 
-     * @param {*} event 
-     * @returns 
+     * Método que valida as informações dos input do formulário.
+     * Verifica se o e-mail é válido e se a senha atende os critérios de tamanho.
      * 
-     * Método que valida as informações dos input.
+     * @param {Event} event 
+     * @returns - retorna true se a validação tiver algum erro.
+     * 
      */
   }, {
     key: "validate",
@@ -265,11 +333,14 @@ var Login = /*#__PURE__*/function () {
 
     /**
      * 
-     * @param {*} inputField  
-     * @param {*} errorText
+     * Método que irá criar mensagens de erro,
+     * essas mensagens serão inseridas após o campo.
+     * A mensagem recebe uma classe 'text-danger'.
      * 
-     * Método que criará mensagens de erros e salvá-los em uma DIV,
-     * que irá ser acrescentada ao final do input.
+     * @param {string} errorText - Texto da mensagem de erro.
+     * @param {HTMLElement} fieldInput - O campo onde a mensagem será inserida pós.
+     * @returns {void}
+     * 
      */
   }, {
     key: "createError",
@@ -281,7 +352,11 @@ var Login = /*#__PURE__*/function () {
     }
 
     /**
-     * Método para evitar que a mensagem de erro se repita.
+     * Método que remove todas as mensagens de erro com
+     * a classe 'text-danger' antes de validar novamente.
+     * 
+     * @returns {void} 
+     * 
      */
   }, {
     key: "cleanUp",

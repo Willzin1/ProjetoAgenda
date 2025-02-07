@@ -1,0 +1,54 @@
+<%- include('./includes/part_view_head') %>
+
+<%- include('./includes/part_view_navbar') %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-2"></div>
+
+      <div class="col-lg-8 my-3">
+        <h1 class="text-center">Contato</h1>
+        <p class="text-center lead">Crie ou edite um contato.</p>
+
+        <%- include('./includes/messages')%>
+
+        <% if (contato._id) { %>
+          <form class="form-contato" action="/contato/edit/<%= contato._id %>" method="POST">
+            <!-- Adicione os campos do formulário aqui -->
+        <% } else { %>
+          <form class="form-contato" action="/contato/register" method="POST">
+            <!-- Adicione os campos do formulário aqui -->
+          
+        <% } %>
+      
+          <div class="mb-3">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <label for="nome" class="form-label">Nome</label>
+            <input value="<%= contato.nome  %>" type="text" class="form-control" name="nome" placeholder="Nome">
+          </div>
+          
+          <div class="mb-3">
+            <label for="Sobrenome" class="form-label">Sobrenome</label>
+            <input value="<%= contato.sobrenome  %>" type="text" class="form-control" name="sobrenome" placeholder="Sobrenome">
+          </div>  
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input value="<%= contato.email  %>" type="email" class="form-control" name="email" placeholder="Email">
+          </div>
+
+          <div class="mb-3">
+            <label for="telefone" class="form-label">Telefone</label>
+            <input value="<%= contato.telefone  %>" type="tel" class="form-control" name="telefone" placeholder="telefone">
+          </div>
+          <button type="submit" class="btn btn-primary">Cadastrar contato</button>
+      </form>
+
+      </div>
+
+      
+      <div class="col-lg-2"></div>
+    </div>
+  </div>
+
+<%- include('./includes/part_view_footer') %>
+    

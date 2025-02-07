@@ -1,0 +1,62 @@
+<%- include('./includes/part_view_head') %>
+
+<%- include('./includes/part_view_navbar') %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-2"></div>
+
+      <div class="col-lg-8 my-3">
+        <h1 class="text-center">Criar conta</h1>
+        <p class="text-center lead">Faça login ou registre-se abaixo</p>
+        <%- include('./includes/messages'); %>
+      </div>
+
+      <div class="row">
+
+        <div class="col-lg">
+          <h4>Cadastre-se</h4>
+          <p>Se ainda não possui conta, preencha o formulário abaixo.</p>
+          
+          <form class="form-cadastro" action="/login/register" method="POST">
+            <div class="mb-3">
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+              <label for="email" class="form-label">Seu Email</label>
+              <input type="email" class="form-control" name="email" placeholder="Email">
+            </div>
+            <div class="mb-3">
+              <label for="senha" class="form-label">Sua senha</label>
+              <input type="password" class="form-control" name="password" placeholder="Senha">
+            </div>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+          </form>
+
+        </div>
+
+
+        <div class="col-lg">
+          <h4>Faça login</h4>
+          <p>Se já possui uma conta, realize login abaixo</p>
+          
+          <form class="form-login" action="/login/login" method="POST">
+            <div class="mb-3">
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+              <label for="email" class="form-label">Seu Email</label>
+              <input type="email" class="form-control" name="email" placeholder="Email">
+            </div>
+            <div class="mb-3">
+              <label for="senha" class="form-label">Sua senha</label>
+              <input type="password" class="form-control" name="password" placeholder="Senha">
+            </div>
+            <button type="submit" class="btn btn-login btn-primary">Entrar</button>
+          </form>
+
+        </div>
+      </div>
+      
+      <div class="col-lg-2"></div>
+    </div>
+  </div>
+
+<%- include('./includes/part_view_footer') %>
+    

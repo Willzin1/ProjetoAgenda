@@ -23,12 +23,12 @@ class Login {
         this.user = await LoginModel.findOne({ email: this.body.email });
 
         if(!this.user) {
-            this.errors.push('Email ou senha inválidos.');
+            this.errors.push('E-mail ou senha inválidos.');
             return;
         }
 
         if(!bcryptjs.compareSync(this.body.password, this.user.password)) {
-            this.errors.push('Email ou senha inválidos.');
+            this.errors.push('E-mail ou senha inválidos.');
             this.user = null;
             return;
         }

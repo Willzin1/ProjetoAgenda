@@ -100,12 +100,6 @@ var Contato = /*#__PURE__*/function () {
     _classCallCheck(this, Contato);
     this.form = document.querySelector(formClass);
   }
-
-  /**
-  * Método para inicializar os eventos.
-  * 
-  * @returns {void}
-  */
   return _createClass(Contato, [{
     key: "init",
     value: function init() {
@@ -115,17 +109,6 @@ var Contato = /*#__PURE__*/function () {
         _this.handleSubmit(event);
       });
     }
-
-    /**
-     * 
-     * Método para lidar com o evento de submit.
-     * Previne o envio padrão e chama a validação 
-     * dos campos e do email antes de submeter. 
-     * 
-     * @param {Event} event 
-     * @returns {void}
-     * 
-     */
   }, {
     key: "handleSubmit",
     value: function handleSubmit(event) {
@@ -135,17 +118,6 @@ var Contato = /*#__PURE__*/function () {
       }
       ;
     }
-
-    /**
-     * 
-     * Método que irá percorrer os campos
-     * e verificará se estão preenchidos.
-     * Caso algum campo esteja vazio, cria
-     * uma mensagem de erro. 
-     * 
-     * @returns {boolean} - retorna true se algum campo estiver vazio.
-     * 
-     */
   }, {
     key: "isFieldValid",
     value: function isFieldValid() {
@@ -167,18 +139,7 @@ var Contato = /*#__PURE__*/function () {
       } finally {
         _iterator.f();
       }
-      return valid;
     }
-
-    /**
-     * 
-     * Método que irá verificar se o email inserido no input é válido.
-     * Caso não seja válido, cria uma mensagem de erro.
-     * 
-     * @param {Event} event 
-     * @returns {boolean} - retorna true caso o email seja inválido.
-     * 
-     */
   }, {
     key: "isEmailValid",
     value: function isEmailValid(event) {
@@ -186,23 +147,11 @@ var Contato = /*#__PURE__*/function () {
       var emailInput = el.querySelector('input[name="email"]');
       var valid = false;
       if (!validator__WEBPACK_IMPORTED_MODULE_0___default().isEmail(emailInput.value)) {
-        this.createError(emailInput, 'E-mail aaaa inválido.');
+        this.createError(emailInput, 'E-mail inválido.');
         valid = true;
       }
       return valid;
     }
-
-    /**
-     * 
-     * Método que irá criar mensagens de erro,
-     * essas mensagens serão inseridas após o campo.
-     * A mensagem recebe uma classe 'text-danger'.
-     * 
-     * @param {string} errorText - Texto da mensagem de erro.
-     * @param {HTMLElement} fieldInput - O campo onde a mensagem será inserida pós.
-     * @returns {void}
-     * 
-     */
   }, {
     key: "createError",
     value: function createError(fieldInput, errorText) {
@@ -211,14 +160,6 @@ var Contato = /*#__PURE__*/function () {
       div.classList.add('text-danger');
       fieldInput.insertAdjacentElement('afterend', div);
     }
-
-    /**
-     * Método que remove todas as mensagens de erro com
-     * a classe 'text-danger' antes de validar novamente.
-     * 
-     * @returns {void} 
-     * 
-     */
   }, {
     key: "cleanUp",
     value: function cleanUp() {
@@ -271,11 +212,7 @@ var Login = /*#__PURE__*/function () {
   }
 
   /**
-   * 
    * Método para inicializar os eventos.
-   * 
-   * @returns {void}
-   * 
    */
   return _createClass(Login, [{
     key: "init",
@@ -289,13 +226,9 @@ var Login = /*#__PURE__*/function () {
 
     /**
      * 
-     * Método que irá lidar com o submit.
-     * Previne o envio padrão.
-     * Se a validação não tiver nenhum sucesso,
-     * ele submete o formulário.
+     * @returns 
      * 
-     * @returns {void}
-     *  
+     * Método que irá lidar com o submit.
      */
   }, {
     key: "handleSubmit",
@@ -306,23 +239,37 @@ var Login = /*#__PURE__*/function () {
 
     /**
      * 
-     * Método que valida as informações dos input do formulário.
-     * Verifica se o e-mail é válido e se a senha atende os critérios de tamanho.
+     * @param {*} event 
+     * @returns 
      * 
-     * @param {Event} event 
-     * @returns - retorna true se a validação tiver algum erro.
-     * 
+     * Método que valida as informações dos input.
      */
   }, {
     key: "validate",
     value: function validate(event) {
       var el = event.target;
+      var nameInput = el.querySelector('input[name="name"]');
       var emailInput = el.querySelector('input[name="email"]');
       var senhaInput = el.querySelector('input[name="password"]');
       var error = false;
       this.cleanUp();
+      var _iterator = _createForOfIteratorHelper(el.querySelectorAll('.form-control')),
+        _step;
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var field = _step.value;
+          var label = field.previousElementSibling.innerHTML;
+          if (!field.value) {
+            this.createError(field, "Campo ".concat(label.slice(3, label.length), " n\xE3o pode estar vazio."));
+          } else {}
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
       if (!validator__WEBPACK_IMPORTED_MODULE_0___default().isEmail(emailInput.value)) {
-        this.createError(emailInput, 'E-mail válido.');
+        this.createError(emailInput, 'E-mail inválido.');
         error = true;
       }
       if (senhaInput.value.length < 8 || senhaInput.value.length > 50) {
@@ -334,14 +281,11 @@ var Login = /*#__PURE__*/function () {
 
     /**
      * 
-     * Método que irá criar mensagens de erro,
-     * essas mensagens serão inseridas após o campo.
-     * A mensagem recebe uma classe 'text-danger'.
+     * @param {*} inputField  
+     * @param {*} errorText
      * 
-     * @param {string} errorText - Texto da mensagem de erro.
-     * @param {HTMLElement} fieldInput - O campo onde a mensagem será inserida pós.
-     * @returns {void}
-     * 
+     * Método que criará mensagens de erros e salvá-los em uma DIV,
+     * que irá ser acrescentada ao final do input.
      */
   }, {
     key: "createError",
@@ -353,26 +297,22 @@ var Login = /*#__PURE__*/function () {
     }
 
     /**
-     * Método que remove todas as mensagens de erro com
-     * a classe 'text-danger' antes de validar novamente.
-     * 
-     * @returns {void} 
-     * 
+     * Método para evitar que a mensagem de erro se repita.
      */
   }, {
     key: "cleanUp",
     value: function cleanUp() {
-      var _iterator = _createForOfIteratorHelper(this.form.querySelectorAll('.text-danger')),
-        _step;
+      var _iterator2 = _createForOfIteratorHelper(this.form.querySelectorAll('.text-danger')),
+        _step2;
       try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var errorText = _step.value;
+        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+          var errorText = _step2.value;
           errorText.remove();
         }
       } catch (err) {
-        _iterator.e(err);
+        _iterator2.e(err);
       } finally {
-        _iterator.f();
+        _iterator2.f();
       }
     }
   }]);

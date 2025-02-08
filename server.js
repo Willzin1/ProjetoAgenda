@@ -62,7 +62,7 @@ app.use(csrfMiddleware);
 app.use(routes);
 
 app.on('pronto', () => {
-    app.listen(3443, () => {
-        console.log('SERVIDOR EXECUTANDO NA PORTA: 3443');
+    app.listen(4334, () => {
+        console.log('SERVIDOR EXECUTANDO NA PORTA: 4334');
     });
 })

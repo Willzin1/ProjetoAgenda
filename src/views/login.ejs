@@ -21,8 +21,12 @@
           <form class="form-cadastro" action="/login/register" method="POST">
             <div class="mb-3">
               <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-              <label for="email" class="form-label">Seu Email</label>
-              <input type="email" class="form-control" name="email" placeholder="Email">
+              <label for="name" class="form-label">Seu nome</label>
+              <input type="text" class="form-control" name="name" placeholder="Nome">
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Seu e-mail</label>
+              <input type="email" class="form-control" name="email" placeholder="E-mail">
             </div>
             <div class="mb-3">
               <label for="senha" class="form-label">Sua senha</label>
@@ -41,8 +45,8 @@
           <form class="form-login" action="/login/login" method="POST">
             <div class="mb-3">
               <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-              <label for="email" class="form-label">Seu Email</label>
-              <input type="email" class="form-control" name="email" placeholder="Email">
+              <label for="email" class="form-label">Seu e-mail</label>
+              <input type="email" class="form-control" name="email" placeholder="E-mail">
             </div>
             <div class="mb-3">
               <label for="senha" class="form-label">Sua senha</label>

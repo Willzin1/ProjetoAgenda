@@ -6,11 +6,7 @@ export default class Login {
     }
 
     /**
-     * 
      * Método para inicializar os eventos.
-     * 
-     * @returns {void}
-     * 
      */
     init() {
         if(!this.form) return;
@@ -22,13 +18,9 @@ export default class Login {
 
     /**
      * 
-     * Método que irá lidar com o submit.
-     * Previne o envio padrão.
-     * Se a validação não tiver nenhum sucesso,
-     * ele submete o formulário.
+     * @returns 
      * 
-     * @returns {void}
-     *  
+     * Método que irá lidar com o submit.
      */
     handleSubmit(event) {
         event.preventDefault();
@@ -38,22 +30,31 @@ export default class Login {
 
     /**
      * 
-     * Método que valida as informações dos input do formulário.
-     * Verifica se o e-mail é válido e se a senha atende os critérios de tamanho.
+     * @param {*} event 
+     * @returns 
      * 
-     * @param {Event} event 
-     * @returns - retorna true se a validação tiver algum erro.
-     * 
+     * Método que valida as informações dos input.
      */
     validate(event) {
         const el = event.target;
+        const nameInput = el.querySelector('input[name="name"]');
         const emailInput = el.querySelector('input[name="email"]');
         const senhaInput = el.querySelector('input[name="password"]');
         let error = false;
         this.cleanUp();
 
+        for(let field of el.querySelectorAll('.form-control')){
+            let label = field.previousElementSibling.innerHTML;
+
+            if(!field.value) {
+                this.createError(field, `Campo ${label.slice(3, label.length)} não pode estar vazio.`);
+            }else{
+                
+            }
+        }
+
         if(!validator.isEmail(emailInput.value)) {
-            this.createError(emailInput, 'E-mail válido.');
+            this.createError(emailInput, 'E-mail inválido.');
             error = true;
         }
 
@@ -67,14 +68,11 @@ export default class Login {
 
     /**
      * 
-     * Método que irá criar mensagens de erro,
-     * essas mensagens serão inseridas após o campo.
-     * A mensagem recebe uma classe 'text-danger'.
+     * @param {*} inputField  
+     * @param {*} errorText
      * 
-     * @param {string} errorText - Texto da mensagem de erro.
-     * @param {HTMLElement} fieldInput - O campo onde a mensagem será inserida pós.
-     * @returns {void}
-     * 
+     * Método que criará mensagens de erros e salvá-los em uma DIV,
+     * que irá ser acrescentada ao final do input.
      */
     createError(inputField, errorText) {
         const div = document.createElement('div');
@@ -84,11 +82,7 @@ export default class Login {
     }
 
     /**
-     * Método que remove todas as mensagens de erro com
-     * a classe 'text-danger' antes de validar novamente.
-     * 
-     * @returns {void} 
-     * 
+     * Método para evitar que a mensagem de erro se repita.
      */
     cleanUp() {
         for (let errorText of this.form.querySelectorAll('.text-danger')) {

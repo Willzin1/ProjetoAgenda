@@ -167,6 +167,7 @@ var Contato = /*#__PURE__*/function () {
       } finally {
         _iterator.f();
       }
+      return valid;
     }
 
     /**
@@ -185,7 +186,7 @@ var Contato = /*#__PURE__*/function () {
       var emailInput = el.querySelector('input[name="email"]');
       var valid = false;
       if (!validator__WEBPACK_IMPORTED_MODULE_0___default().isEmail(emailInput.value)) {
-        this.createError(emailInput, 'E-mail inválido.');
+        this.createError(emailInput, 'E-mail aaaa inválido.');
         valid = true;
       }
       return valid;
@@ -316,13 +317,12 @@ var Login = /*#__PURE__*/function () {
     key: "validate",
     value: function validate(event) {
       var el = event.target;
-      var nomeInput = el.querySelector('input[name="name"]');
       var emailInput = el.querySelector('input[name="email"]');
       var senhaInput = el.querySelector('input[name="password"]');
       var error = false;
       this.cleanUp();
       if (!validator__WEBPACK_IMPORTED_MODULE_0___default().isEmail(emailInput.value)) {
-        this.createError(emailInput, 'E-mail inválido.');
+        this.createError(emailInput, 'E-mail válido.');
         error = true;
       }
       if (senhaInput.value.length < 8 || senhaInput.value.length > 50) {

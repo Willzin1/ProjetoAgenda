@@ -53,7 +53,7 @@ export default class Login {
         this.cleanUp();
 
         if(!validator.isEmail(emailInput.value)) {
-            this.createError(emailInput, 'E-mail inválido.');
+            this.createError(emailInput, 'E-mail válido.');
             error = true;
         }
 

@@ -59,6 +59,8 @@ export default class Contato {
                 valid = true;
             }
         }
+
+        return valid;
     }
 
     /**

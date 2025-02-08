@@ -16,7 +16,7 @@ exports.register = async (req, res) => {
         };
 
         req.flash('success', 'Contato registrado com sucesso.');
-        req.session.save(() => res.redirect('/'));
+        req.session.save(() => res.redirect('/agenda'));
         return;
     } catch(err) {
         console.log(err);
@@ -46,7 +46,7 @@ exports.edit = async (req, res) => {
         };
 
         req.flash('success', 'Contato alterado com sucesso.');
-        req.session.save(() => res.redirect(`/`));
+        req.session.save(() => res.redirect('/agenda'));
         return;
     }catch(err) {
         console.log(err);
@@ -62,7 +62,7 @@ exports.delete = async (req, res) => {
         if(!contato) return res.render('404');
 
         req.flash('success', 'Contato deletado com sucesso.');
-        req.session.save(() => res.redirect('/'));
+        req.session.save(() => res.redirect('/agenda'));
         return;
     } catch (err) {
         console.log(err);

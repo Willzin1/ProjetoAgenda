@@ -3,7 +3,7 @@ const validator = require('validator');
 const bcryptjs = require('bcrypt');
 
 const LoginSchema = new mongoose.Schema({
-    name: {type: String, required: true},
+    name: {type: String},
     email: { type: String, required: true },
     password: { type: String, required: true }
 });

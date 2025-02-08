@@ -66,5 +66,3 @@ app.on('pronto', () => {
         console.log('SERVIDOR EXECUTANDO NA PORTA: 3443');
     });
 })
-
-

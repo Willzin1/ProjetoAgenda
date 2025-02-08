@@ -7,7 +7,7 @@ const contatoController = require('./src/controllers/contatoController');
 const { loginRequired } = require('./src/middlewares/middleware');
 
 // Rotas Home
-route.get('/', homeController.index);
+route.get('/', loginRequired, homeController.index);
 
 // Rotas Login
 route.get('/login/index', loginController.index);

@@ -29,6 +29,7 @@ export default class Contato {
      * 
      */
     handleSubmit(event) {
+        
         event.preventDefault();
 
         if (!this.isFieldValid() && !this.isEmailValid(event)) {
@@ -75,7 +76,7 @@ export default class Contato {
         let valid = false;
 
         if(!validator.isEmail(emailInput.value)) {
-            this.createError(emailInput, 'E-mail inválido.');
+            this.createError(emailInput, 'E-mail aaaa inválido.');
             valid = true;
         }
 

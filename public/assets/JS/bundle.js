@@ -316,6 +316,7 @@ var Login = /*#__PURE__*/function () {
     key: "validate",
     value: function validate(event) {
       var el = event.target;
+      var nomeInput = el.querySelector('input[name="name"]');
       var emailInput = el.querySelector('input[name="email"]');
       var senhaInput = el.querySelector('input[name="password"]');
       var error = false;

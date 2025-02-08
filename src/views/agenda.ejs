@@ -2,48 +2,53 @@
 
 <%- include('./includes/part_view_navbar') %>
 
-  <div class="container d-flex flex-column min-vh-100">
-    <div class="row">
-      <div class="col-lg-2"></div>
+<div class="container d-flex flex-column min-vh-100">
+    <div class="row flex-grow-1">
+        <!-- Ajustando as colunas para diferentes tamanhos de tela -->
+        <div class="col-12 col-lg-2"></div>
 
-      <div class="col-lg-8 my-3">
-        <h1 class="text-center">Agenda</h1>
-        <p class="text-center lead"> <%= user.name %>, seus contatos estão abaixo</p>
+        <div class="col-12 col-lg-8 my-3">
+            <h1 class="text-center">Agenda</h1>
+            <p class="text-center lead"> <%= user.name %>, seus contatos estão abaixo</p>
 
-        <div class="d-flex justify-content-center mt-5">
-            <a class="btn btn-secondary" href="/contato/index">+ Novo contato</a>
+            <div class="d-flex justify-content-center mt-5">
+                <a class="btn btn-secondary" href="/contato/index">+ Novo contato</a>
+            </div>
         </div>
-      </div>
 
-      <%- include('./includes/messages')%>
-      <% if (contatos.length > 0) { %>
+        <%- include('./includes/messages') %>
+
+        <% if (contatos.length > 0) { %>
         <div class="responsive-table">
-          <table class="table my-3">
-            <tr>
-              <th>Nome</th>
-              <th>Sobrenome</th>
-              <th>Email</th>
-              <th>Telefone</th>
-            </tr>
-            <% contatos.forEach(contato => { %>
-              <tr>
-                <td><%= contato.nome %></td>
-                <td><%= contato.sobrenome %></td>
-                <td><%= contato.email %></td>
-                <td><%= contato.telefone %></td>
-                <td><a href="/contato/index/<%= contato._id %>">Editar</a></td>
-                <td><a class="text-danger" href="/contato/delete/<%= contato._id %>">Excluir</a></td>
-              </tr>
-            <% }); %>
-          </table>
+            <table class="table my-3">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Sobrenome</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% contatos.forEach(contato => { %>
+                        <tr>
+                            <td><%= contato.nome %></td>
+                            <td><%= contato.sobrenome %></td>
+                            <td><%= contato.email %></td>
+                            <td><%= contato.telefone %></td>
+                            <td><a href="/contato/index/<%= contato._id %>">Editar</a></td>
+                            <td><a class="text-danger" href="/contato/delete/<%= contato._id %>">Excluir</a></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
         </div>
-      <% } else { %>
-        <p class="text-center lead">Não há nenhum contato cadastrado.</p>
-       <% } %>
-      
-      <div class="col-lg-2 mt-5"></div>
+        <% } else { %>
+            <p class="text-center lead">Não há nenhum contato cadastrado.</p>
+        <% } %>
+
+        <div class="col-12 col-lg-2 mt-5"></div>
     </div>
-  </div>
+</div>
 
 <%- include('./includes/part_view_footer') %>
-    

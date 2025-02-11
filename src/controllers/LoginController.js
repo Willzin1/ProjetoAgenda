@@ -1,7 +1,7 @@
 const Login = require('./../models/LoginModel');
 
 exports.index = (req, res) => {
-    if (req.session.user) return res.render('user-logado');
+    if (req.session.user) return res.render('index');
     return res.render('login');
 };
 
@@ -48,7 +48,7 @@ exports.login = async function(req, res) {
         req.session.save(function () {
             return res.redirect('/');
         });    
-        // return res.send(login.user); // <- ONDE VEM O POST DO FORMULÁRIOl
+
     } catch(err) {
         console.log(err);
         return res.render('404');

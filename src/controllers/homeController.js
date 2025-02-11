@@ -5,6 +5,6 @@ exports.index = async (requisicao, resposta) => {
 }
 
 exports.agenda = async (req, res) => {
-    const contatos = await Contato.buscaContatos();
+    const contatos = await Contato.buscaContatos(req.session.user._id);
     res.render('agenda', { contatos });
 }

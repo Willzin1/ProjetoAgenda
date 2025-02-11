@@ -7,6 +7,7 @@ const ContatoSchema = new mongoose.Schema({
     email: { type: String, required: false, default: '' },
     telefone: { type: String, required: false, default: '' },
     criadoEm: { type: Date, default: Date.now },
+    userId: {type: mongoose.Schema.Types.ObjectId, ref: 'Login'}
 })
 
 const ContatoModel = mongoose.model('Contato', ContatoSchema);
@@ -32,8 +33,8 @@ Contato.delete = async function(id) {
     return contato;
 }
 
-Contato.buscaContatos = async function() {
-    const contatos = await ContatoModel.find()
+Contato.buscaContatos = async function(id) {
+    const contatos = await ContatoModel.find({ userId: id })
         .sort({criadoEm: -1}); // -1 é ordem decrescente, 1 é ordem crescente
     return contatos;
 }
@@ -45,10 +46,11 @@ Contato.buscaPorId = async function(id) {
     return contato;
 }
 
-Contato.prototype.register = async function() {
+Contato.prototype.register = async function(userId) {
     this.valida();
 
     if(this.errors.length > 0) return;
+    this.body.userId = userId;
     this.contato = await ContatoModel.create(this.body);
 }
 
@@ -74,9 +76,9 @@ Contato.prototype.cleanUp = function() {
         nome: this.body.nome,
         sobrenome: this.body.sobrenome,
         email: this.body.email,
-        telefone: this.body.telefone
+        telefone: this.body.telefone,
+        userId: this.body.userId
     }
 }
-
 
 module.exports = Contato;

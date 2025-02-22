@@ -13,7 +13,7 @@ const LoginModel = mongoose.model('Login', LoginSchema);
 class Login {
     constructor(body) {
         this.body = body;
-        this.errors = []; // <- Irá controlar se não há erros no preenchimento do formulário
+        this.errors = []; 
         this.user = null;
     }
 

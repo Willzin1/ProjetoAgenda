@@ -1,7 +1,5 @@
-// Para salvarmos variaveis de ambientes, não subiremos em nosso repositorio.
 require('dotenv').config();
 
-// Requirindo o express.
 const express = require('express');
 const app = express();
 
@@ -9,33 +7,34 @@ const app = express();
 const mongoose = require('mongoose');
 mongoose.connect(process.env.CONNECTIONSTRING)
     .then(() => {
-        console.log('conectei na base')
         app.emit('pronto');
     })
     .catch(err => console.log(err));
 
 // Para garantirmos sessões.
 const session = require('express-session');
+
 // Para dizermos que as sessões serão salvas na base de dados.
 const MongoStore = require('connect-mongo');
+
 // Para garantirmos mensagens de flash, geralmente aquelas de erro de login
 const flash = require('connect-flash');
 
 // Rotas
-const routes = require('./routes')
-// Path para consertar as barras /\ 
+const routes = require('./routes');
+
+// Path para consertar o caminho
 const path = require('path');
 
 // Medidas de seguranças
-const csrf = require('csurf'); // cria um token para todos os formulários, afim de evitar ataques.
+const csrf = require('csurf');
 
-// Nossos middlewares, são funções que são executadas na rota
+// Nossos middlewares
 const { middlewareGlobal, checkCsrfError, csrfMiddleware } = require('./src/middlewares/middleware');
 
-app.use(express.urlencoded({ extended: true })); // Este middleware será útil para processar os dados de formulários enviados, permitindo acessá-los via req.body na sua rota.
-app.use(express.json()); // é usado para garantir que o Express consiga interpretar requisições com o conteúdo no formato JSON de maneira simples e automática.
-
-app.use(express.static(path.resolve(__dirname, 'public'))); // são todos os arquivos estáticos da nossa aplicação, exemplo são imagens, css, javascript.
+app.use(express.urlencoded({ extended: true })); 
+app.use(express.json()); 
+app.use(express.static(path.resolve(__dirname, 'public'))); 
 
 // Configurações das sessões.
 const sessionOptions = session({
@@ -44,7 +43,7 @@ const sessionOptions = session({
     resave: false,
     saveUninitialized: false,
     cookie: {
-        maxAge: 1000 * 60 * 60 * 24 * 7, // Pegar o tempo que ficará salvo em cookies, (7 dias)
+        maxAge: 1000 * 60 * 60 * 24 * 7, 
         httpOnly: true
     }
 })
@@ -52,8 +51,8 @@ const sessionOptions = session({
 app.use(sessionOptions);
 app.use(flash());
 
-app.set('views', path.resolve(__dirname, 'src', 'views')); // setando as views
-app.set('view engine', 'ejs'); // setando a engine que renderizará as views.
+app.set('views', path.resolve(__dirname, 'src', 'views')); 
+app.set('view engine', 'ejs'); 
 
 app.use(csrf());
 app.use(middlewareGlobal);
@@ -62,7 +61,5 @@ app.use(csrfMiddleware);
 app.use(routes);
 
 app.on('pronto', () => {
-    app.listen(3443, () => {
-        console.log('SERVIDOR EXECUTANDO NA PORTA: 3443');
-    });
+    app.listen(process.env.DB_PORT);
 })

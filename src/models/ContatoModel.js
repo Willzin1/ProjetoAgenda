@@ -35,7 +35,7 @@ Contato.delete = async function(id) {
 
 Contato.buscaContatos = async function(id) {
     const contatos = await ContatoModel.find({ userId: id })
-        .sort({criadoEm: -1}); // -1 é ordem decrescente, 1 é ordem crescente
+        .sort({criadoEm: -1}); 
     return contatos;
 }
 

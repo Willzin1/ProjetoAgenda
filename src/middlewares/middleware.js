@@ -1,18 +1,18 @@
-exports.middlewareGlobal = (requisicao, response, next) => {
-    response.locals.errors = requisicao.flash('errors');
-    response.locals.success = requisicao.flash('success');
-    response.locals.user = requisicao.session.user;
+exports.middlewareGlobal = (req, res, next) => {
+    res.locals.errors = req.flash('errors');
+    res.locals.success = req.flash('success');
+    res.locals.user = req.session.user;
     next();
 }
 
-exports.checkCsrfError = (err, requisicao, response, next) => {
-    if (err) response.render('404');
+exports.checkCsrfError = (err, req, res, next) => {
+    if (err) res.render('404');
 
     next();
 }
 
-exports.csrfMiddleware = (requisicao, response, next) => {
-    response.locals.csrfToken = requisicao.csrfToken();
+exports.csrfMiddleware = (req, res, next) => {
+    res.locals.csrfToken = req.csrfToken();
     next();
 }
 

@@ -10,7 +10,7 @@
         <%- include('./includes/messages'); %>
         <% if (user) { %>
           <h1 class="text-center text-muted">Boas-vindas, <%= user.name %>!</h1>
-            <p class="text-center lead">Você pode acessar a sua agenda clicando <style>a {text-decoration: underline; font-weight: bolder;}</style> <a class="text-muted" href="/agenda">aqui</a> ou se preferir pode ir pela nav-bar e clicar em Minha Agenda.</p>
+            <p class="text-center lead">Você pode acessar a sua agenda clicando <style>a { text-decoration: underline; font-weight: bolder; }</style> <a class="text-muted" href="/agenda">aqui</a> ou se preferir pode ir pela nav-bar e clicar em Minha Agenda.</p>
 
           <h2 class="text-center text-muted mt-5">Sobre o projeto</h2>
           <p class="text-justify lead">Esse projeto foi desenvolvido durante um curso de Javascript. Ele é um <strong>CRUD</strong> de uma agenda de contatos. O projeto foi implementado em <strong>Javascript</strong> no frontend, <strong>Node.js</strong> para o backend, <strong>MongoDB</strong> para armazenar as informações de contatos e logins. O deploy foi feito na <strong>Google Cloud Platform (GCP)</strong>.</p>
@@ -20,11 +20,11 @@
           <p class="text-justify lead">Além das funcionalidades básicas de adcionar um contato, editar um contato, listar e excluir os contatos, o sistema também possuí uma autenticação de usuários. A interface é construída de forma responsiva, garantindo uma boa usabilidade para dispositivos móveis e desktop.</p>
 
           <h2 class="text-center text-muted mt-5">Sobre mim</h2>
-          <p class="text-justify lead">Me chamo William, sou um estudante focado em me tornar um desenvolvedor Fullstack. Atualmente estou cursando Técnico em Desenvolvimento de Sistemas pela ETEC da Zona Leste, além de estar cursando Tecnólogo em Análise e desenvolvimento de sistemas pela UNINVOE. Algumas das minhas redes para contato: <a target="_blank" href="https://www.linkedin.com/in/william-mendon%C3%A7a/">Linkedin</a> | <a target="_blank" href="https://github.com/Willzin1/">Github</a></p>
+          <p class="text-justify lead">Me chamo William, sou um estudante focado em me tornar um desenvolvedor Fullstack. Atualmente estou cursando Técnico em Desenvolvimento de Sistemas pela ETEC da Zona Leste, além de estar cursando Tecnólogo em Análise e desenvolvimento de sistemas pela UNINOVE. Algumas das minhas redes para contato: <a target="_blank" href="https://www.linkedin.com/in/william-mendon%C3%A7a/">Linkedin</a> | <a target="_blank" href="https://github.com/Willzin1/">Github</a></p>
 
       <% } else { %>
         <h1 class="text-center text-muted">Boas-vindas!</h1>
-        <p class="text-center lead">Para acessar as informações sobre o projeto e mais detalhes, faça o login ou <a href="/login/index">registre-se</a></p>
+        <p class="text-center lead">Para acessar as informações sobre o projeto e mais detalhes, faça o <a href="/login/index">login</a> ou <a href="/login/index">registre-se</a></p>
         <p class="text-center lead">Ao entrar, você poderá ver um pouco mais sobre o projeto e as tecnologias usadas.</p>
         <% } %>
          
@@ -33,4 +33,5 @@
   </div>
 
 <%- include('./includes/part_view_footer') %>
+
     

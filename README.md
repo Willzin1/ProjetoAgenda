@@ -42,7 +42,7 @@ O projeto segue o padrão **MVC** com a seguinte estrutura:
 
 - **package.json:** Contém as dependências do projeto.
 
-O projeto estará disponível em `http://35.198.12.207/`.
+O projeto estará disponível em `http://35.198.12.207/`.  * Temporariamente fora do ar *
     
 
-Feito por [William](https://github.com/Willzin1) * Temporariamente fora do ar *
+Feito por [William](https://github.com/Willzin1)

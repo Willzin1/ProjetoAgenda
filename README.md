@@ -45,4 +45,4 @@ O projeto segue o padrão **MVC** com a seguinte estrutura:
 O projeto estará disponível em `http://35.198.12.207/`.
     
 
-Feito por [William](https://github.com/Willzin1)
+Feito por [William](https://github.com/Willzin1) * Temporariamente fora do ar *
